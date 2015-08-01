@@ -1,0 +1,15 @@
+JPanelMenu = new javax.swing.JPanel()
+{
+    protected void paintComponent(Graphics g)
+    {
+        g.drawImage(new ImageIcon(LokasiGambarStartDb()).getImage(), 15, 5, null);
+        super.paintComponent(g);
+    }
+}
+;
+
+JPanelMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+JPanelMenu.setPreferredSize(new java.awt.Dimension(410, 290));
+JPanelMenu.setOpaque(false);
+JPanelMenu.setLayout(null);

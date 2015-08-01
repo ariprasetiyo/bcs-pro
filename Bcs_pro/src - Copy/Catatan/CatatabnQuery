@@ -1,0 +1,33 @@
+
+/*
+    update data dan select from
+*/
+UPDATE A    
+  SET ControllingSalesRep = RA.SalesRepCode   
+from DHE.dbo.tblAccounts A
+  INNER JOIN DHE_Import.dbo.tblSalesRepsAccountsLink RA
+    ON A.AccountCode = RA.AccountCode
+
+
+Query 3 join untuk ambil data qty_1_porsi, satuan_1_porsi, nama bahan, dan trans_no
+         SELECT detail_resep.qty_1_porsi, detail_resep.satuan_1_porsi, 
+                header_penerimaan.trans_no, header_penerimaan.judul_resep, 
+                detail_trans_penerimaan.trans_no, detail_trans_penerimaan.nama_bahan, detail_trans_penerimaan.qty, detail_trans_penerimaan.satuan
+         FROM detail_trans_penerimaan RIGHT JOIN header_penerimaan 
+                ON detail_trans_penerimaan.trans_no = header_penerimaan.trans_no
+            LEFT JOIN detail_resep 
+                ON header_penerimaan.judul_resep = detail_resep.namresep
+         WHERE detail_trans_penerimaan.trans_no = 'WR2014011'
+         AND detail_trans_penerimaan.nama_bahan = detail_resep.bahan
+
+Menghitung total
+SELECT DISTINCT  bahan, namresep ,sum( qty ) total_qty, satuan"
+                           + " from detail_resep "
+                           + " where namresep in ( "+ PilihData + " )"
+                           + " GROUP BY bahan"
+
+
+Membuat variabel di mysql
+Syarat hanya satu kolom
+SET @v1 := (SELECT COUNT(*) FROM user_rating);
+SELECT @v1;

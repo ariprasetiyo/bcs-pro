@@ -1,0 +1,14 @@
+/*
+        * Set Tanggal di kazao
+        */
+
+        SistemPro.TanggalSistem TglNow = new SistemPro.TanggalSistem(); 
+        Calendar Tgl = Calendar.getInstance();
+
+        Tgl.set(TglNow.ConvertTglBlnThnToTahun(TglBuatResep), TglNow.ConvertTglBlnThnToBulan(TglBuatResep) - 1, TglNow.ConvertTglBlnThnToTanggal(TglBuatResep));
+        kazaoCalendarDateCreatePurchase.setCalendar(Tgl); 
+
+
+Format tanggal
+
+tgl-bulan-tahun diconvert ke kazao

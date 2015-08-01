@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="cfef3dc1-37bf-4fa4-a50f-a7b5ffb26891">
+	<property name="ireport.zoom" value="1.3310000000000022"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="253"/>
+	<parameter name="HitPenyusutan1" class="java.lang.String"/>
+	<parameter name="HitPenyusutan2" class="java.lang.String"/>
+	<parameter name="HitSewa1" class="java.lang.String"/>
+	<parameter name="HitKantor1" class="java.lang.String"/>
+	<parameter name="JumlahPorsi" class="java.lang.String"/>
+	<parameter name="Kenaikan" class="java.lang.String"/>
+	<parameter name="BiayaKemasan" class="java.lang.String"/>
+	<parameter name="HitLPG1" class="java.lang.String"/>
+	<parameter name="HItLPG2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<parameter name="parameter4" class="java.lang.String"/>
+	<parameter name="Solar" class="java.lang.String"/>
+	<parameter name="HitListrik1" class="java.lang.String"/>
+	<parameter name="HitListrik2" class="java.lang.String"/>
+	<parameter name="HitAir1" class="java.lang.String"/>
+	<parameter name="HitAir2" class="java.lang.String"/>
+	<parameter name="HitTenagaKerja1" class="java.lang.String"/>
+	<parameter name="HitTenagaKerja2" class="java.lang.String"/>
+	<parameter name="HitTenagaKerjaTidakLangsung1" class="java.lang.String"/>
+	<parameter name="HitTenagaKerjaTidakLangsung2" class="java.lang.String"/>
+	<parameter name="HitBiayaLangsung1" class="java.lang.String"/>
+	<parameter name="HitBiayaLangsung2" class="java.lang.String"/>
+	<parameter name="HitBiayaTidakLangsung1" class="java.lang.String"/>
+	<parameter name="HitBiayaTidakLangsung2" class="java.lang.String"/>
+	<parameter name="HitBiayaProduksi" class="java.lang.String"/>
+	<parameter name="HitLaba1" class="java.lang.String"/>
+	<parameter name="HitLaba2" class="java.lang.String"/>
+	<parameter name="HitHarga1" class="java.lang.String"/>
+	<parameter name="HitHarga2" class="java.lang.String"/>
+	<parameter name="HitHarga3" class="java.lang.String"/>
+	<parameter name="JudulPorsi" class="java.lang.String"/>
+	<parameter name="xxxBiayaSewa" class="java.lang.String"/>
+	<parameter name="xxxBiayaAlatKantor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Prevent">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="759935f5-ca42-4ac2-98d6-84c4b3e16ec3" x="267" y="40" width="74" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6e86a40a-47b1-422c-bebb-3f07e556ed6c" x="132" y="0" width="284" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN RANCANGAN HARGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab9c4450-3fad-41e0-83fd-c33171353fea" x="218" y="39" width="47" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3efe8ce7-4eac-4ea7-a328-890220407fc3" x="132" y="20" width="284" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[METODE PROFESIONAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3c73790d-6b3d-49af-8569-d9c917477f7d" x="227" y="0" width="100" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{JudulPorsi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="524" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="a955f3b7-5073-479b-b0a5-90266a188d60" x="0" y="0" width="555" height="524"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="41e4818c-cc99-49c3-9b0b-6b113b4b329b" x="49" y="34" width="293" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= (Penyusutan Alat 1 Bln / Produksi 1 Bln) x Jml Porsi Pesanan]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1a00724a-1281-4325-83ca-786bab6f8d3f" x="121" y="377" width="21" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Kenaikan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fe965b4d-8392-40ed-bcc7-d78312720ca5" x="35" y="20" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Biaya Penyusutan Alat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="545510b3-3205-421a-ba42-3ac7c3847d74" x="35" y="76" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Biaya Sewa Dan Pemiharaan Gedung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee62d258-ac23-4976-8432-a6a89280ccbf" x="35" y="6" width="192" height="14"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIAYA TIDAK LANGSUNG]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="093d0684-b144-4c46-b623-ef6b4f7d8a58" x="49" y="48" width="259" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitPenyusutan1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e0baf896-3be4-4446-92df-7f636f296078" x="49" y="62" width="259" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitPenyusutan2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd83e706-6f63-4618-b472-6461469e2bf8" x="49" y="117" width="292" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitSewa1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9e521fe-8449-404b-8699-02251348abeb" x="35" y="130" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Alat Kantor]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="50a73c8e-2579-48c7-8e4d-0720db755891" x="49" y="172" width="292" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitKantor1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4d6859f4-4b0a-4e71-b9d2-6e8461bd7208" x="35" y="198" width="192" height="14"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIAYA PRODUKSI KESELURUHAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="01715375-55b8-4ce2-93f1-1e2acfd3f3dc" x="35" y="212" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Biaya Langsung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="411dc225-a521-4341-8f0d-b03c859a7a57" x="35" y="268" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Biaya Tidak Langsung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="725bd3c6-5422-4605-9c73-3bcd65fd2e2e" x="49" y="226" width="395" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= ( Total Food Cost + Biaya Bahan Bakar + Biaya Umum + Biaya Tenaga Kerja )]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ada5efdc-c4ea-4a64-960f-a6949abd45ed" x="49" y="240" width="331" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitBiayaLangsung1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e9e8811f-5dd9-4c04-b216-b45470e8845a" x="49" y="254" width="331" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitBiayaLangsung2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fd93c087-1465-4e9b-8471-e07e414a0a6d" x="49" y="282" width="395" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= ( Biaya Penyusutan Alat + Sewa Dan Pemeliharaan Gedung + Alat Kantor )]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cc65be25-33bd-4499-8a72-0f8b966725f3" x="49" y="296" width="331" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitBiayaTidakLangsung1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d2b549f1-1df5-42dd-ade0-97aed9e2baf6" x="49" y="310" width="331" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitBiayaTidakLangsung2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="34ce6dde-5567-4201-9827-a990acab37a5" x="35" y="324" width="188" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Biaya Produksi ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cce646d0-2ab0-4b53-ab8c-156231aa1795" x="49" y="338" width="358" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[=  Biaya Langsung + Biaya Tidak Langsung]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="75f9e627-733f-40b5-af3e-42a3c6840612" x="49" y="352" width="358" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitBiayaProduksi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4d789877-637c-4384-b07a-3e0ec9e5cccb" x="35" y="377" width="86" height="14"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LABA DIHARAPKAN :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f39c61ba-7b19-4500-a5ed-f1bdfe0cd723" x="75" y="391" width="192" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ % x Biaya Produksi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c3699ea0-c993-4878-8084-e5d6950a8976" x="49" y="391" width="11" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[=  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6ff55adf-00f6-4ebf-8e1d-73f2dc283c10" x="60" y="391" width="15" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Kenaikan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9d660705-c10b-4ccc-8391-a50e816adbed" x="49" y="405" width="238" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitLaba1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d4de5641-6356-4d9b-88d7-5b7e8bf792f4" x="49" y="419" width="238" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitLaba2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e6ea231c-0665-463d-98fa-a6ad092c7f64" x="35" y="443" width="130" height="14"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HARGA JUAL PER PORSI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f14eebd3-c72c-487e-aaee-ba4d28738490" x="49" y="457" width="358" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= ( Biaya Produksi + Laba Diharapkan) / Jumlah Porsi  Pesanan]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c8d8dee9-187b-4372-af8c-44b57a7457de" x="49" y="471" width="358" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitHarga1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="550e133f-b591-4d06-9c17-762e253a9456" x="49" y="484" width="147" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitHarga2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e0e7330f-d9c3-4e34-aa71-fdf6094c733b" x="49" y="497" width="147" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HitHarga3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d9cd6a49-0583-45f1-a0a5-fef6080b1b7d" x="142" y="377" width="12" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1189a302-d876-480d-b10f-d41bd6482d2f" x="49" y="90" width="314" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= (Biaya Sewa dan Pemeliharaan Gedung 1 Bln / Produksi 1 Bln) x Jml Porsi Pesanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b04fd1b0-d38d-4d19-86b7-4d6389d92a01" x="49" y="144" width="314" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[= Biaya Alat Kantor 1 Bln / Produksi 1 Bln) x Jml Porsi Pesanan]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5ef4c257-7c65-486b-8496-cc780445e396" x="49" y="104" width="292" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{xxxBiayaSewa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f6a98d61-5eea-4446-ad75-0df4681908c5" x="49" y="158" width="292" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{xxxBiayaAlatKantor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="18">
+			<textField>
+				<reportElement uuid="eba9b325-6f90-47bf-9e8f-b178740a4aac" x="290" y="3" width="13" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

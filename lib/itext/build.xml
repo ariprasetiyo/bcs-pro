@@ -1,0 +1,1158 @@
+<project name="chem" default="compile" basedir=".">
+    <property name="sourcedir" value="${basedir}/src"/>
+    <property name="targetdir" value="${basedir}/build"/>
+    <property name="librarydir" value="${basedir}/lib"/>
+
+    
+    <path id="libraries">
+        <fileset dir="${librarydir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${targetdir}"/>
+        <mkdir dir="${targetdir}"/>
+    </target>
+
+    <target name="compile" depends="copy-resources">
+      <javac srcdir="${sourcedir}"
+             destdir="${targetdir}"
+             classpathref="libraries"
+             debug="on">
+
+      </javac>       
+    </target>
+    <target name="copy-resources">
+        <copy todir="${targetdir}">
+            <fileset dir="${sourcedir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="run" depends="compile">
+<!--        <java classname="AddingAWTImageColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingAWTImagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingChunkToParagraphPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingImageToTableCellPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingMorethanOneChunkPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingNewLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingParagraphToAPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddingRectangleToColumnPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddPageNumbersToExistingPageNumberPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AddWatermarkImageToAnExistingPDFFile" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AffineTransformationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AHrefForAWebsitePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AnnotatedImageHyperLink" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="AnnotatedImagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ArabicTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Barcode128Demo" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Barcodes128" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Barcodes39" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Barcodes39Ext" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesEAN13" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesEANSUPP" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesInter25" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesPLANET" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesPostnet" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BarcodesSUPP5" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BigTableWithHeaderRowsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Bookmarks1PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="BookmarksPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellAlignmentBaselinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellAlignmentCenterPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellAlignmentJustifiedPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellAlignmentMiddlePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellBorderColorsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellBorderColorsWidthBackgroundPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellEventsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellFixedHeightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellGrayScalePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellHeightsWarpAndNoWrapPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellMinimumHeightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellPaddingLeadingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellPaddingTopLeftPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellsFitPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CellWidthsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChainedActionsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChangingCellWidthsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChangingDocumentMarginPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChapterSectionAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChapterSectionNewSectionPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChapterSectionPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChapterSectionSetBookmarkOpenPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChunkFontColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChunksFontBackgroundPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChunksTextRiseUnderLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ChunkWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CirclesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ClosingAPDFDocument" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ColumnAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ColumnIrregular" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ConcatenateFormsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Convert2pdfptable" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CoordinateUpsideDownPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CopyPDFFileAndAddMetaData" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CreatingAnchorForRTF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CreatingAnchorInPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CreatingANewPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CreatingHyperLinkForHTML" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="CustomPDFDocumentPageSizePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DefaultPageSizeA4PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DestinationsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DifferentTextBackgroundSuperscript" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DocumentPageCountPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DocumentPageEventPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawArcPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawCrossPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawLineCapPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawLineUsingPdfContentBytePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawRectanglePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="DrawTextWithRGBFillPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ElementAlignJustifiedBOTTOMLEFTPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EncapsulatedPostScript" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EncryptedPDFAllowAssemblyFillInScreenRead" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EncryptedPDFWithAllowCopyPrinting" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EncryptedPDFWithUserPasswordOwnerPassword" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EncryptorExamplePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EndOfLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="EndOfLineWithTextRenderModePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ExampleBarcodePDF417" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ExtendingLastRowPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ExtraStyleNORMALPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ExtraStyleSTRIKETHRUPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ExtraStyleUNDERLINEPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FillCirclesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FillWithoutStrokeCirclesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FixedFontWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontColorByPdfContentBytePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontEncodingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontFactoryFontsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontFactoryStylesBoldPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontFactoryStylesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontListPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontSelectionPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontStyle1PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontStyle2PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FontStyle3PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormComboPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormFillAndMakeItFlattenPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormFillPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormListPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormPushButtonPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FormSignaturePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FourColumnTablePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="FullFontNamesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="G2DCircleIntersectPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="G2DDrawStringPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="GenerateTwoPDFAndHTMLRTF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="GettingDefaultCellPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="GreekListsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="GStatePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="HelloWorldMultiplePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="HelloWorldPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="HelloWorldRtf" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="HTMLListsAtoEPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="HyphenationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageAbsolutePositionsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageMasksPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagePatternShapePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageRotatingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesAlignmentWithTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesBMPPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesBOTTOMPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageScaleToFitPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageScalingAbsolutePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageScalingByPercentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageScalingPercentTwoAxisPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesDefaultWRAPInANewLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesDefaultWRAPPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageSequencePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesGIFPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesJPGPDF." fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesPNGPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesTEXTWRAPPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesTIFPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesUNDERLYINGPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImagesWMFPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ImageTableCellPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="iTextVersion" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="JavaScriptActionPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="JumpLocalDestinationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LandscapePortraitPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LayerImageOnTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LayersGroupPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LayerShapeOnTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LayersPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LINECAPROUNDPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LINE_CAP_PROJECTING_SQUARE_and_LINE_CAP_B" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListAndSublistHTML" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListAndSublistPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListEncodingsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListsWithDifferentFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListsWithDifferentFontPDFHTML" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListSymbolHTML" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        
+        <java classname="ListSymbolPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListWithLongTextLineHTML" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ListWithLongTextLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LiteralPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LocalDestinationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LocalGotoPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LockingCellWidthsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="LongParagraphPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MakingMasksFromByteArrayPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MeasurementsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MergingTwoPDFToOne" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MirroringMarginsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MultiColumnIrregular" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MultiColumnRegularColumnsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MultiColumnSimplePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="MultipleLinedTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NamedActionsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NegativeLeadingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NestedTableCellPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NestedTablesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NestedTablesWithoutPointPositionPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NewPageChunkNEXTPAGEPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NewPagePageEmptyPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="NewPageToStartANewPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OnEndPageEventPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OnParagraphEventPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OpenApplicationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutlineActionsHyperLinkPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutlineActionsJavaScriptCodePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutlineActionsRemotePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutlineActionsWithSubitemsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutlineWithStylePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutputPDFCommandForDebug" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="OutputPDFUsingServletOutputStream" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PaddingBordersPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PageFooterPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PageHeaderPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PageLabelsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ParagraphAlignJustifiedPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ParagraphAttributesIndentLeftRightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ParagraphAttributesSpaceAfterPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ParagraphAttributesSpaceBeforePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ParagraphsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Pattern1PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PatternColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PatternPatternColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PatternPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PatternPdfContentByte" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PauseWritingAndResumeWritingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfActionGotoAnotherPdfFile" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfActionGotoLocalPage" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfActionGotoLocalPage1" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfContentByteColor" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfEvents" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PDFListsAtoE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PDFMetaSubjectKeywordsCreatorAuthorCreation" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PDFMetaTitle" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfPageEventHelperDemo" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PDFServlet" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfVersion1_2" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PdfVersion1_3" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PhraseInaChunkPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PhraseWithColorRedAndNormalFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PhraseWithLeadingLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="PhraseWithSeveralChunksAndDifferentFontsP" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RawDataFromImageFileAndManipulationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="RawDataFromImageFilePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ReadYourOwnPDFFile" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RegisterFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RemoteGotoPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RenderingTEXT_RENDER_MODE_FILL" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RenderingTEXT_RENDER_MODE_FILL_STROKE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RenderingTEXT_RENDER_MODE_FILL_STROKE5" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RenderingTEXT_RENDER_MODE_INVISIBLE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RenderingTEXT_RENDER_MODE_STROKE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RightToLeftPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RomanListsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RTFServlet" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="RtfTableOfContent" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SetDefaultCellLeadingPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingBackgroundSizePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageBackgroundColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSize11X17A9A10ARCHA" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA0" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA1" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA2" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA3" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA5" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA6" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA7" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeA8" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeAndMargins" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeARCHBCDE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeB0" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeB1B2" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeB3B4B5" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeFLSAFLSEHALFLETTERLEDGER" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeLEGALNOTE" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SettingPageSizeLETTER" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShadingPatternPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShadingPatternTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShapeDashLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShapeLinePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShapeRectanglePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ShowTextUsingPdfContentBytePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsAddAnnotationWithoutSpec" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsDrawRectangleToShowAnnotation" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsLocalDestinationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsWithAnotherPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsWithApplicationPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsWithHyperLinkInAnImagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsWithHyperLinkPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleAnnotationsWithMpegMoviePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableCellAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableCellPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableCellSpaceLeftPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableCellWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableRowBackgroundPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableRowBorderWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SimpleTableTwoCellsInARowPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Skew012" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Skew450" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="Skew_450" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpaceWordRatioNO_SPACE_CHAR_RATIO" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpaceWordRatioSPACE_CHAR_RATIO_DEFAULT" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpecialSymbolPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpecificCellPositionPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpecificCellWithDifferentWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SplitRowsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SplitTablePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsForTemplatePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsForTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsGrayPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsspc_rgbPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SpotColorsTintPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StandardFontsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StatePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StrictImageSequencePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StrikeThroughTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StrokeClosePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StrokeColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="StrokeLineWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="SubSupScriptPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TableCellAlignmentCenterMiddlePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TableCellAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TableCellBorderColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TableCellBorderWidthPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TableCellColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellDefaultAlignmentPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellFitPagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellFormatNoBorderPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellHeightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellSpanPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellWithBackgroundPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableCellWithFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableColumnRowCountPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableEvents1PDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableHeaderPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableHorizontalAlignmentRightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableSpacingAfterPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableSpacingBeforePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableWidthPercentagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TableWithImagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TemplateImagesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+
+        <java classname="TemplateImagesScaleHeightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TemplatesDrawPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TemplatesTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextBackgroundPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextFieldsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextPatternColorPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextPatternShapePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TextRightLeftPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ThreeColumnsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ThreeParagraphsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TransformationsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TransformImagePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TransparencyPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TrueTypeCollectionsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TrueTypeFromTTFFilePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TwoNestedTablesPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="TwoOnOnePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UnderlinedTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UnicodeExamplePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UsingBaseFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UsingFontFactoryPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UsingFontFactoryToGetAllRegisterFamilies." fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UsingRegisterFontPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UsingUnicodePDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="VerticalTextPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ViewerPreferencesDisplayDocTitle" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ViewerPreferencesHideMenubarHideToolbar" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ViewerPreferencesPageLayoutTwoColumnLeft" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ViewerPreferencesPageLayoutTwoColumnRightPageModeFullScreenNonFullScreenPageModeUseThumbs" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="UseThumbs" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ViewerPreferencesPrintScalingNone" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="WidthHeightPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="WriteSelectedRowsPDF" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="XandYcoordinatesPdfContentByte" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="XandYcoordinatesPdfContentByteText" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ZapfDingbatsLists" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+        <java classname="ZapfDingbatsNumberLists" fork="true" classpathref="libraries">     
+             <classpath path="${targetdir}"/>
+        </java>
+-->        
+    </target>
+</project>
+

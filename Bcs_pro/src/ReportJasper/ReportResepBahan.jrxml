@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="a6974b63-249e-436f-a267-515ac6ff90d6">
+	<property name="ireport.zoom" value="1.24184264611831"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NamaResep" class="java.lang.String"/>
+	<parameter name="JumlahPorsi" class="java.lang.String"/>
+	<parameter name="field" class="java.lang.String"/>
+	<field name="COLUMN_1" class="java.lang.String"/>
+	<field name="COLUMN_2" class="java.lang.String"/>
+	<field name="COLUMN_3" class="java.lang.String"/>
+	<field name="COLUMN_4" class="java.lang.String"/>
+	<field name="COLUMN_5" class="java.lang.String"/>
+	<field name="COLUMN_6" class="java.lang.String"/>
+	<field name="COLUMN_7" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4df08c3c-e41c-4976-8902-3dac65a4ca33" x="0" y="0" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[BSC_PRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2d28b03-bf27-40e3-afc8-4bea16f22c5d" x="0" y="15" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Resep Bahan]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yy">
+				<reportElement uuid="79553f77-04f3-42d6-a350-923c1d3378f8" x="0" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c40c60fc-4693-447b-80fa-91c9a7e79d35" x="86" y="5" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{NamaResep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1ae5d7e4-8fd7-4b55-83f6-05841402f406" x="0" y="5" width="86" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nama Resep	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b63f1f35-19fa-41af-a1ee-747f631629e1" x="0" y="20" width="86" height="15"/>
+				<textElement/>
+				<text><![CDATA[Jumlah Porsi	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="17f4d4ca-a0ff-4b85-98c9-f9402476d1d5" x="86" y="20" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{JumlahPorsi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="51a202ae-e066-48fd-a4cf-5611221ae477" x="0" y="0" width="555" height="16"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c7020d87-1fec-4467-839c-0a54a9a44f62" x="100" y="0" width="65" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama Bahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8362a671-d262-4b45-a993-4bbaf997b00f" x="447" y="0" width="38" height="16"/>
+				<textElement/>
+				<text><![CDATA[Jumlah ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="15cf3b81-6c23-40f8-a73d-75d6a1ae2d93" x="489" y="0" width="23" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{JumlahPorsi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ab5e7849-50a7-425f-8af5-11230124fb32" x="514" y="0" width="38" height="16"/>
+				<textElement/>
+				<text><![CDATA[Porsi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a44be7e-3ff7-4b1d-b694-e042f73b0c0c" x="332" y="0" width="99" height="16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jumlah 1 Porsi]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="9e590079-9c31-4698-ac94-f39f732748e6" x="331" y="0" width="1" height="16"/>
+			</line>
+			<staticText>
+				<reportElement uuid="ae4d8f82-0fe0-43f3-9505-bfcf57ba316b" x="4" y="1" width="17" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="4011b9a6-553d-4cf3-8d70-251a982d8344" x="21" y="1" width="1" height="14"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="2994564b-9326-4780-8f8f-4006e054870e" x="0" y="0" width="555" height="14"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="bcfa750b-ebae-4c56-80de-9733cd319c98" x="32" y="0" width="203" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="307c3689-3cc2-4bed-acb0-dcfdfbffee24" x="337" y="1" width="25" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d05a937c-dada-49a6-be29-734579987ed8" x="443" y="0" width="25" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ea11527-e910-4c81-8a64-91f219162c6c" x="475" y="0" width="73" height="14"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d99514fb-a002-415d-8a0c-6e2fb1f75db2" x="442" y="-16" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="60da09cb-0284-4a68-89b9-c6268f46b66b" x="331" y="1" width="1" height="13"/>
+			</line>
+			<line>
+				<reportElement uuid="5d087e73-dae0-4d5d-8fd5-aff398dee2af" x="21" y="1" width="1" height="13"/>
+			</line>
+			<textField>
+				<reportElement uuid="1f51f057-849e-4c45-a57b-ebc5d47f1618" x="4" y="1" width="17" height="13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="11b7b531-5719-4505-922e-816f1b6fbc2b" x="365" y="1" width="76" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="258" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="fb57b572-97a8-4f56-8e37-90061ba097f9" x="0" y="0" width="86" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cara Masak 	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="09e86536-bc6a-4e59-8154-991e07f0f687" x="0" y="15" width="555" height="243"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9aa543cb-a2a5-49c6-b311-026e57944bca" x="271" y="0" width="18" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

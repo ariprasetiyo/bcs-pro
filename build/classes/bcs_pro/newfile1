@@ -1,0 +1,57 @@
+ private void JTextFieldDinamik2(int baris){
+        List<JTextField> JTextKeterangAlokasi   = new ArrayList<>();
+        List<JTextField> JTextFieldWaktu        = new ArrayList<>();
+        List<JComboBox> JComboWaktu             = new ArrayList<>();
+        
+        int batas   = 6;
+        if (lokasi2 < batas){
+             JComboBox ComboWaktu[] =new JComboBox[baris];
+
+             JTextField Lokasi[]    = new JTextField[baris];;
+             JTextField Waktu[]     = new JTextField[baris];   
+
+            SistemPro.ComponentHanyaAngka AntiHuruf = new SistemPro.ComponentHanyaAngka();
+            
+            System.out.println(JTextKeterangAlokasi.size() + " xxxxxxxxx");
+
+            for(int j = 0; j <= baris ; j++){
+                
+                System.out.println(j + " yyy");
+
+                JTextKeterangAlokasi.add(Lokasi[j] );            
+                JTextFieldWaktu.add(Waktu[j]);           
+                JComboWaktu.add(ComboWaktu[j]);
+                
+//                ComboWaktu[j].addItem("Menit");
+//                ComboWaktu[j].addItem("Jam");
+//                ComboWaktu[j].addItem("Hari");
+                
+                JTextKeterangAlokasi.get(j ).setLocation(getSize().width/85, getSize().height/22 + lokasi);
+                JTextKeterangAlokasi.get(j ).setSize(120, 23);
+
+                JTextFieldWaktu.get(j ).setLocation(getSize().width/7, getSize().height/22+ lokasi);
+                JTextFieldWaktu.get(j ).setSize(50, 23);
+
+                JComboWaktu.get(j ).setLocation(getSize().width/5,getSize().height/22+ lokasi);
+                JComboWaktu.get(j ).setSize(71, 23);
+                for (int a = 1; a <= j ; a++){
+                    JPanelInputDinamis.add(JTextKeterangAlokasi.get(j));
+                    JPanelInputDinamis.add(JTextFieldWaktu.get(j));
+                    JPanelInputDinamis.add(JComboWaktu.get(j));
+                    
+                }
+                
+
+               /*
+                * Anti huruf
+                */              
+               AntiHuruf. SetAntiAngkaPakeDataDoubel(JTextFieldWaktu.get(j));
+               SetAntiKelebihanJamDanHarusPakeDataDouble(JComboWaktu.get(j),JTextFieldWaktu.get(j) );
+               SeleksiMenitJamDanHari(JComboWaktu.get(j), JTextFieldWaktu.get(j));
+        
+            }
+        }
+        lokasi +=28;
+        lokasi2 +=1;
+        repaint();
+    }

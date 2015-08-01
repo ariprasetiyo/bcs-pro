@@ -1,0 +1,90 @@
+1. Ada 3 bagian file :
+    - Resep view
+    - Buat resep object
+    - Utama
+3. Copykan ini ke Utama
+
+    form_purchaseorderView  DapatTransNo = new form_purchaseorderView(new javax.swing.JFrame(), true);
+    DapatTransNo.setVisible(true);
+
+    form_purchaseorderObject Dt = DapatTransNo.GetTableData();
+    JTextOpenPo.setText(Dt.GetVPTransNo());
+    JTextSupplierWr.setText(Dt.GetVPSuplier());
+    JTextAdressWr1.setText(Dt.GetVPSuplierAddress());
+    //JTextDeliveryToPo.setText(Dt.GetVPDepartementsAddress());
+    JTextGrandTotWr.setText(Dt.GetVPGrandTot());
+
+4. Buat GetTableData() di View
+
+    /*
+     * action diaman mau ambil data dari open view po 2
+     */
+    private ResepObject DataObject;
+     public ResepObject GetTableData(){
+        return DataObject;
+    }
+5. Buat code di object 
+    Example :
+    String TransNo;
+    public String GetVPTransNo(){
+        return TransNo;
+    }
+    public void SetVPTransNo (String Data){
+        this.TransNo = Data;
+    }
+
+6. Buat di View code sabagai berikut yang digunakan untuk mangambil data dan mengirim ke UTAMA
+   DataObject = new form_purchaseorderObject();
+   DataObject.SetVPTransNo(AmbilDataTransNo);
+
+
+
+ String GetVRNamaResepp;
+     private void ViewPembelianYangSudahDiBuat(){
+        PembelianBahanView CallPembelianBahan = new PembelianBahanView (new javax.swing.JFrame(), true);
+        CallPembelianBahan.setVisible(true);
+        
+        PembelianObject Dt = CallPembelianBahan.GetTableData();  
+        try{
+            this.GetVRNamaResep     = Dt.GetPembelianNamaResep();
+            JTextFieldTransNo.setText(Dt.GetPembelianTransNo());
+            JTextFieldPbPasar.setText(Dt.GetPembelianSupplier());
+            JTextFieldPbTotal.setText(Dt.GetPembelianTotalBiaya());
+            JFormattedTextFieldPbUangMuka.setText(Dt.GetPembelianUangMuka());
+            AmbilDataDatabaseSetelahGetBrowse(Dt.GetPembelianTransNo());
+        }  
+        catch(Exception X){           
+        }
+    }
+     private void AmbilDataDatabaseSetelahGetBrowse(String PilihData){
+       
+        /*
+         * Isi data ke Tabel dari database
+         */      
+        int baris;       
+        ResultSet HQ = null;
+           try {
+               Statement stm = K.createStatement();
+               HQ = stm.executeQuery("SELECT  trans_no, no ,qty,nama_bahan, satuan, harga_satuan, harga_tot from detail_trans where trans_no = '"+ PilihData + "' order by no asc  ");                     
+               baris = HQ.getRow();
+               
+               while(HQ.next()  ){
+
+                   String No     = String.valueOf(HQ.getInt("no")).toString();
+                   String Bahan  = HQ.getString("bahan");
+                   String Qty    = String.valueOf(HQ.getInt("qty")).toString();
+                   String Satuan = HQ.getString("satuan");
+                   
+                   String[] add         = {No,Bahan,Qty,Satuan,"", "0"};
+                   TabelModelPb.addRow(add);      
+               }
+                this.JTabelEdit = true;
+           }
+           catch (Exception ex){
+                JOptionPane.showMessageDialog (null, "Error (4)"+ ex, "Error" , JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+           }
+       // JTabelResep.getColumnModel().getColumn(4).setCellRenderer(  new ButtonJTable("Delete"));
+        //JTabelResep.getColumnModel().getColumn(4).setCellEditor(  new ButtonJTableKeDua(new JCheckBox(),TabelModelOrder, JTabelResep));   
+
+   }

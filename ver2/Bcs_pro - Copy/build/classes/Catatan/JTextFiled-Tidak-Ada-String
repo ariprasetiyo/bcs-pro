@@ -1,0 +1,47 @@
+/*
+         * Format Number untuk deteksi JTextField
+         * try {
+           MaskFormatter mascara = new MaskFormatter("##.##");
+           JFormattedTextField textField = new JFormattedTextField(mascara);
+           textField.setValue(new Float("12.34"));
+         } catch (Exception e) {
+            ...
+         }
+         * 
+         * JTextField textField = new JTextField(10);
+           textField.addKeyListener(new KeyAdapter() {
+               public void keyTyped(KeyEvent e) {
+                  char c = e.getKeyChar();
+                  if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                     e.consume();  // ignore event
+                  }
+               }
+            });
+            * 
+            * 
+            * public void keyTyped(KeyEvent e)
+                {
+                  char c = e.getKeyChar();
+                  if (!((c >= '0') && (c <= '9') ||    
+                     (c == KeyEvent.VK_BACK_SPACE) ||
+                     (c == KeyEvent.VK_DELETE))) {
+                        getToolkit().beep();
+                        e.consume();
+                  }
+                }
+         */
+        
+        JFormattedTextField JumlahPorsi  = new JFormattedTextField(NumberFormat.getIntegerInstance());
+
+
+atau bias serpti ini
+
+JFormattedTextField JumlahPorsi  = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        JTextField NamaResep    = new JTextField();
+
+
+
+
+== jTextField format
+
+http://staf.cs.ui.ac.id/WebKuliah/java/tutorial/uiswing/components/formattedtextfield.html

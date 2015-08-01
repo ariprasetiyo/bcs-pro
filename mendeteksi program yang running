@@ -1,0 +1,29 @@
+private void cek() {
+
+        try {
+            String line;
+            String pidInfo ="";
+
+            Process p =Runtime.getRuntime().exec(System.getenv("windir") +"\\system32\\"+"tasklist.exe");
+
+            BufferedReader input =  new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            while ((line = input.readLine()) != null) {
+                pidInfo+=line; 
+            }
+
+            input.close();
+
+            if(pidInfo.contains("mysql.exe"))
+            {
+                // do what you want
+               
+            }
+            else {
+                 JOptionPane.showMessageDialog(null, "mysql.exe isn't running");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Bsc_pro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
