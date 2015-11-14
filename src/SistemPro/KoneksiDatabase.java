@@ -17,7 +17,7 @@ public class KoneksiDatabase {
         String IpServer = "localhost";
         String Database = "bsc_pro";
         String User     = "root";
-        String Password = "C0b4dib4c4";
+        String Password = "";
         //String Password = "";
         public Connection koneksi = null;
        
